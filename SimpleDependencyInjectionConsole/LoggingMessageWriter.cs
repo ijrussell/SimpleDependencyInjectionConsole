@@ -20,7 +20,7 @@ namespace SimpleDependencyInjectionConsole
 
         public void Write(string message)
         {
-            _logger.Debug(string.Format("[{0}] {1}", DateTime.Now, message));
+            _logger.Debug(string.Format("LoggingMessageWriter [{0}] {1}", DateTime.UtcNow, message));
             _writer.Write(message);
         }
     }

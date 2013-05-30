@@ -2,6 +2,6 @@
 {
     public interface IShippingCostCalculator
     {
-        int CalculatePrice(ShoppingBasket shoppingBasket);
+        decimal CalculatePrice(ShoppingBasket shoppingBasket);
     }
 }

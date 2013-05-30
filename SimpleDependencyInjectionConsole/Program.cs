@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Ninject;
 
 namespace SimpleDependencyInjectionConsole
@@ -9,37 +10,64 @@ namespace SimpleDependencyInjectionConsole
         {
             //ServiceLocator.Register<IMessageValidator>(new SimpleMessageValidator());
             //ServiceLocator.Register<IMessageWriter>(new ConsoleMessageWriter());
+            
+            //var kernel = new StandardKernel(new PrimaryModule());
 
             try
             {
-                var kernel = new StandardKernel(new PrimaryModule());
-                
-                //Constructor Injection======================================================
-                //var handler = new MessageHandler(new SimpleMessageValidator(), new ConsoleMessageWriter());
-                var handler = kernel.Get<MessageHandler>();
 
-                handler.Process("Hello CraftyCoders!");
+                //Constructor Injection======================================================
+                //var handler = ObjectFactory.CreateMessageHandler();
+                //var handler = kernel.Get<MessageHandler>();
+
+                var handler = new MessageHandler();
+
+                handler.Process("Hello Progressive.Net Tutorials 2013!");
+
+                //kernel.Release(handler);
+
 
                 //Method Injection===========================================================
-                var basket = new ShoppingBasket { ShippingMethod = ShippingMethod.Express };
+                //var basket = new ShoppingBasket
+                //{
+                //    ShippingMethod = ShippingMethod.Express
+                //};
 
-                var checkout = kernel.Get<Checkout>();
+                //var checkout = new Checkout(new ShippingCostCalculatorFactory(new List<IShippingCostCalculator>
+                //{
+                //    new ExpressShippingCalculator(),
+                //    new PriceSaverShippingCalculator(),
+                //    new StandardShippingCalculator()
+                //}));
+                //var checkout = kernel.Get<Checkout>();
 
-                var shippingCost = checkout.CalculateShippingCost(basket);
+                //var shippingCost = checkout.CalculateShippingCost(basket);
 
-                Console.WriteLine("Shipping cost = {0:C2}", shippingCost / 100);
+                //Console.WriteLine("Shipping cost = {0:C2}", shippingCost);
+
+                //kernel.Release(checkout);
 
                 //Constructor Argument=======================================================
-                //var repo = kernel.Get<ICustomerRepository>();
+                //var repository = kernel.Get<ICustomerRepository>();
 
-                //var customers = repo.GetAll();
+                //var customers = repository.GetAll();
 
                 //foreach (var customer in customers)
                 //    Console.WriteLine("{0}: {1} [{2}]", customer.CustomerId, customer.CompanyName, customer.Country);
+
+                //var selectedCustomer = repository.GetCustomer("QUICK");
+
+                //Console.WriteLine("{0}: {1} [{2}]", selectedCustomer.CustomerId, selectedCustomer.CompanyName, selectedCustomer.Country);
+
+                //kernel.Release(repository);
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                //kernel.Dispose();
             }
 
             Console.ReadLine();

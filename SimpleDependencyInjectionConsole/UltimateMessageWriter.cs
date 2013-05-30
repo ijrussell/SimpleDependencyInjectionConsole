@@ -2,11 +2,11 @@
 
 namespace SimpleDependencyInjectionConsole
 {
-    public class AlternateMessageWriter : IMessageWriter
+    public class UltimateMessageWriter : IMessageWriter
     {
         public void Write(string message)
         {
-            Console.WriteLine("AlternateMessageWriter wrote '{0}'", message);
+            Console.WriteLine("UltimateMessageWriter wrote '{0}'", message);
         }
     }
 }

@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace SimpleDependencyInjectionConsole
 {
-    public class ShippingCostCalculatorFactory : IShippingCostCalculatorFactory
+    public class ShippingCostCalculatorFactory
     {
         private readonly IEnumerable<IShippingCostCalculator> _calculators;
 

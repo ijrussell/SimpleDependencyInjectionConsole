@@ -1,15 +1,16 @@
 ﻿using System.Collections.Generic;
+using SimpleDependencyInjectionConsole;
 
 namespace SimpleDependencyInjectionConsole
 {
-    /// <summary>
-    /// Manual Composition Root
-    /// AKA poor Man's Dependency Injection
-    /// </summary>
+    //<summary>
+    //Manual Composition Root
+    //AKA poor Man's Dependency Injection
+    //</summary>
     public class ObjectFactory
     {
         private static ILogger _logger;
-        
+
         static ObjectFactory()
         {
             _logger = new ConsoleLogger();
@@ -17,7 +18,7 @@ namespace SimpleDependencyInjectionConsole
 
         public static MessageHandler CreateMessageHandler()
         {
-            return new MessageHandler(CreateMessageValidator(), CreateLoggingMessageWriter());
+            return new MessageHandler();
         }
 
         public static IMessageValidator CreateMessageValidator()
@@ -42,10 +43,10 @@ namespace SimpleDependencyInjectionConsole
 
         public static Checkout CreateCheckout()
         {
-            return new Checkout(CreateShippingCostCalculatorFactory());
+            return new Checkout();
         }
 
-        public static IShippingCostCalculatorFactory CreateShippingCostCalculatorFactory()
+        public static ShippingCostCalculatorFactory CreateShippingCostCalculatorFactory()
         {
             return new ShippingCostCalculatorFactory(CreateShippingCostCalculators());
         }
@@ -56,8 +57,7 @@ namespace SimpleDependencyInjectionConsole
                 {
                     new ExpressShippingCalculator(),
                     new PriceSaverShippingCalculator(),
-                    new StandardShippingCalculator(),
-                    new FreeShippingCostCalculator()
+                    new StandardShippingCalculator()
                 };
         }
     }

@@ -1,4 +1,5 @@
-﻿using Ninject.Modules;
+﻿using System.Configuration;
+using Ninject.Modules;
 
 namespace SimpleDependencyInjectionConsole
 {
@@ -6,17 +7,16 @@ namespace SimpleDependencyInjectionConsole
     {
         public override void Load()
         {
-            Bind<IMessageValidator>().To<SimpleMessageValidator>();
-            Bind<IMessageWriter>().To<ConsoleMessageWriter>().WhenInjectedInto<LoggingMessageWriter>();
-            Bind<IMessageWriter>().To<LoggingMessageWriter>();
+            Bind<IMessageWriter>().To<LoggingMessageWriter>().WhenInjectedInto<MessageHandler>();
+            Bind<IMessageWriter>().To<UltimateMessageWriter>();
             Bind<ILogger>().To<ConsoleLogger>().InSingletonScope();
-
-            Bind<IShippingCostCalculatorFactory>().To<ShippingCostCalculatorFactory>();
             Bind<IShippingCostCalculator>().To<StandardShippingCalculator>();
-            Bind<IShippingCostCalculator>().To<PriceSaverShippingCalculator>().Named("PriceSaver");
+            Bind<IShippingCostCalculator>().To<PriceSaverShippingCalculator>();
             Bind<IShippingCostCalculator>().To<ExpressShippingCalculator>();
 
-            Bind<ICustomerRepository>().To<CustomerRepository>().WithConstructorArgument("connection", @"Server=.\SQL2008R2;Database=Northwind;Trusted_Connection=True;");
+            var connString = ConfigurationManager.ConnectionStrings["db"].ConnectionString;
+
+            Bind<ICustomerRepository>().To<CustomerRepository>().WithConstructorArgument("connection", connString);
         }
     }
 }

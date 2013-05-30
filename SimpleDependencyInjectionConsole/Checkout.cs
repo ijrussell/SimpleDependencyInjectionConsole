@@ -2,18 +2,22 @@
 {
     public class Checkout
     {
-        private readonly IShippingCostCalculatorFactory _shippingCostCalculatorFactory;
-
-        public Checkout(IShippingCostCalculatorFactory shippingCostCalculatorFactory)
+        public decimal CalculateShippingCost(ShoppingBasket shoppingBasket)
         {
-            _shippingCostCalculatorFactory = shippingCostCalculatorFactory;
+            return GetShippingCost(shoppingBasket);
         }
 
-        public int CalculateShippingCost(ShoppingBasket shoppingBasket)
+        private decimal GetShippingCost(ShoppingBasket shoppingBasket)
         {
-            var calculator = _shippingCostCalculatorFactory.GetCalculator(shoppingBasket.ShippingMethod);
-
-            return calculator.CalculatePrice(shoppingBasket);
+            switch (shoppingBasket.ShippingMethod)
+            {
+                case ShippingMethod.Express:
+                    return 25.0m;
+                case ShippingMethod.PriceSaver:
+                    return 2.5m;
+                default:
+                    return 5.0m;
+            }
         }
     }
 }

@@ -12,7 +12,7 @@ namespace SimpleDependencyInjectionTests
             _now = now;
         }
 
-        public override DateTime Now
+        public override DateTime UtcNow
         {
             get { return _now; }
         }

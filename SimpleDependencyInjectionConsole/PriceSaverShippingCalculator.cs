@@ -2,9 +2,9 @@
 {
     public class PriceSaverShippingCalculator : IShippingCostCalculator, IHandleShippingMethod
     {
-        public int CalculatePrice(ShoppingBasket shoppingBasket)
+        public decimal CalculatePrice(ShoppingBasket shoppingBasket)
         {
-            return 250;
+            return 2.5m;
         }
 
         public bool CanHandle(ShippingMethod shippingMethod)

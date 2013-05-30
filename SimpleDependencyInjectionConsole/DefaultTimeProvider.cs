@@ -4,9 +4,9 @@ namespace SimpleDependencyInjectionConsole
 {
     public class DefaultTimeProvider : TimeProvider
     {
-        public override DateTime Now
+        public override DateTime UtcNow
         {
-            get { return DateTime.Now; }
+            get { return DateTime.UtcNow; }
         }
     }
 }

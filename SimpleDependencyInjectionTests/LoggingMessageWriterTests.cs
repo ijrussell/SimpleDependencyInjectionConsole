@@ -18,6 +18,7 @@ namespace SimpleDependencyInjectionTests
         {
             _writer = Substitute.For<IMessageWriter>();
             _logger = Substitute.For<ILogger>();
+
             _sut = new LoggingMessageWriter(_writer, _logger);
         }
 
@@ -26,7 +27,7 @@ namespace SimpleDependencyInjectionTests
         {
             _sut.Write(Message);
 
-            _logger.Received().Debug(Message);
+            _logger.Received().Debug(Arg.Any<string>());
         }
 
         [Test]

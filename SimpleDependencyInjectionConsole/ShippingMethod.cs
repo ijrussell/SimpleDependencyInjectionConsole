@@ -4,7 +4,6 @@
     {
         Standard = 0,
         Express,
-        PriceSaver,
-        Free
+        PriceSaver
     }
 }

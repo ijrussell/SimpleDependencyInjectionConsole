@@ -39,6 +39,7 @@
       <HintPath>..\packages\Ninject.3.0.1.10\lib\net45-full\Ninject.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -47,7 +48,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AlternateMessageWriter.cs" />
+    <Compile Include="Address.cs" />
+    <Compile Include="UltimateMessageWriter.cs" />
     <Compile Include="Checkout.cs" />
     <Compile Include="ConsoleLogger.cs" />
     <Compile Include="ConsoleMessageWriter.cs" />
@@ -55,15 +57,15 @@
     <Compile Include="CustomerRepository.cs" />
     <Compile Include="DefaultTimeProvider.cs" />
     <Compile Include="ExpressShippingCalculator.cs" />
-    <Compile Include="FreeShippingCostCalculator.cs" />
+    <Compile Include="FreeShippingCalculator.cs" />
     <Compile Include="IShippingCostCalculator.cs" />
     <Compile Include="ICustomerRepository.cs" />
     <Compile Include="IHandleShippingMethod.cs" />
     <Compile Include="ILogger.cs" />
     <Compile Include="IMessageValidator.cs" />
     <Compile Include="IMessageWriter.cs" />
-    <Compile Include="IShippingCostCalculatorFactory.cs" />
     <Compile Include="LoggingMessageWriter.cs" />
+    <Compile Include="NullLogger.cs" />
     <Compile Include="PriceSaverShippingCalculator.cs" />
     <Compile Include="PrimaryModule.cs" />
     <Compile Include="ServiceLocator.cs" />
