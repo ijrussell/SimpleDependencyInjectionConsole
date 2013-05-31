@@ -1,0 +1,27 @@
+Requirements for ProgressiveMoneyExchange.co.uk
+
+Outline:
+
+ProgressiveMoneyExchange.co.uk is a new site for changing currency, primarily for travel.  The site will be written in ASP.NET MVC and will have automated testing of all server-side functionality.  For obvious reasons, the use of Dependency Injection, with or without a container, is recommended where appropriate.
+
+Phase 1:
+
+We charge fees for delivery according to the following rules: 
+Order before 3pm for next working day delivery. + Collect from 40 store location points (free). *Home delivery is free for orders over £500, £1.95 for orders over £300 and £3.95 for orders of £300 and under.  We charge a 12.5% markup on all sales ex of delivery.
+
+We have decided to source exchange rate data from a Live Exchange Rates Service (simulated in this task) to begin with. Rates will be cached and the cache will be refreshed according to the valid until date returned by the service.
+
+Mid-market rates: 2013-05-27 20:37 UTC
+USD -> EUR = 0.77317	
+USD -> GBP = 0.66197
+EUR -> USD = 1.29338	
+EUR -> GBP = 0.85618
+GBP -> USD = 1.51064	
+GBP -> EUR = 1.16798
+Rates valid until: 2013-05-27 21:00 UTC
+
+It is highly likely that we will use an alternate source for the rates in the future.
+
+All customer quotes and sales and all requests to the exchange rate service will be logged in the database.
+
+The customer will be emailed with a receipt when they buy (simulate a payment service) that tells them the total amount they have paid and the delivery date if they requested home delivery.
